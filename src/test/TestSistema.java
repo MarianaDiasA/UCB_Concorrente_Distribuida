@@ -9,7 +9,7 @@ import entities.Cliente;
 import entities.Funcionario;
 import entities.Loja;
 
-class TestCliente {
+class TestSistema {
 
 	@Test
 	void saldoInicialCliente() {
@@ -45,11 +45,12 @@ class TestCliente {
 		
 		cl.setBanco(bc);
 		cl.fazerCompra(lo, 2800);
-		Funcionario fu = lo.getFuncionarios().get(0);
-		float valorInvestido = fu.getInvestimento().getSaldo();
-		float valorSalario = fu.getSalario().getSaldo();
 		
+		Funcionario fu = lo.getFuncionarios().get(0);
 		lo.testPagamento();
+		
+		double valorInvestido = fu.getInvestimento().getSaldo();
+		double valorSalario = fu.getSalario().getSaldo();
 		assertEquals(280, valorInvestido);
 		assertEquals(1120, valorSalario);
 		

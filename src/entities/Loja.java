@@ -32,8 +32,9 @@ public class Loja {
 	}
 	
 	public void possuiValor() {
-		if (this.getConta().getSaldo() == SALARIO)
+		if (this.getConta().getSaldo() >= SALARIO) {
 			this.pagarFuncionarios();
+		}
 	}
 	
 	public void testPagamento() {
