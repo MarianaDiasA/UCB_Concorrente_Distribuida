@@ -7,19 +7,39 @@ public class Cliente extends Thread{
 	private Conta conta;
 	private Banco banco;
 	private ArrayList<Loja> lojas;
+	private String nome = "anônimo";
 	
 	public Cliente() {
 		conta = new Conta();
 		banco = new Banco();
-		conta.setSaldo(1000);
+		banco.fazerDeposito(this.getConta(), 1000);
+	}
+	
+	public Cliente(ArrayList<Loja> lojas) {
+		conta = new Conta();
+		banco = new Banco();
+		banco.fazerDeposito(this.getConta(), 1000);
+		this.setLojas(lojas);
+	}
+	
+	public Cliente(String nome,ArrayList<Loja> lojas) {
+		conta = new Conta();
+		banco = new Banco();
+		banco.fazerDeposito(this.getConta(), 1000);
+		this.setNome(nome);
+		this.setLojas(lojas);
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Conta getConta() {
 		return conta;
-	}
-
-	public void fazerCompra(Loja loja, int valor) {
-		banco.fazerTransferencia(conta, loja.getConta(), valor);
 	}
 	
 	public ArrayList<Loja> getLojas() {
@@ -28,6 +48,11 @@ public class Cliente extends Thread{
 	
 	public void setLojas(ArrayList<Loja> lojas) {
 		this.lojas = lojas;
+	}
+	
+	public void fazerCompra(Loja loja, double valor) {
+		banco.fazerTransferencia(conta, loja.getConta(),(int) valor);
+		System.out.printf("feito transferência de %s para loja no valor de R$ %.2f\n", this.getNome(), valor);
 	}
 
 	public void fazerCompras() {
@@ -59,6 +84,10 @@ public class Cliente extends Thread{
 		else 
 			numero = 200;
 		return numero;
+	}
+	
+	public void run() {
+		this.fazerCompras();
 	}
 	
 }
