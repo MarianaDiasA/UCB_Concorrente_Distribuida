@@ -35,20 +35,31 @@ public class Program extends Thread {
 			cliente4.join();
 			cliente5.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
 		
-		System.out.printf("Saldo de um dos funcionários \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n",
+		System.out.println("\n\n-CONTA DOS FUNCIONÁRIOS- ");
+		
+		System.out.printf("SALDO DOS FUNCIONARIOS DA LOJA 1: \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n\n",
 				loja1.getFuncionarios().get(0).getSalario().getSaldo(),
 				loja1.getFuncionarios().get(0).getInvestimento().getSaldo());
-		System.out.printf("Saldo de um dos funcionários \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n",
+		System.out.printf("SALDO DOS FUNCIONARIOS DA LOJA 2: \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n\n",
 				loja2.getFuncionarios().get(0).getSalario().getSaldo(),
 				loja2.getFuncionarios().get(0).getInvestimento().getSaldo());
-		System.out.printf("Saldo da loja 1: R$ %.2f\n",
+		
+		System.out.println("\n-CONTA DAS LOJAS- ");
+		
+		System.out.printf("SALDO DA LOJA 1: R$ %.2f\n",
 				loja1.getConta().getSaldo());
-		System.out.printf("Saldo da loja 2: R$ %.2f\n",
+		System.out.printf("SALDO DA LOJA 2: R$ %.2f\n",
 				loja2.getConta().getSaldo());
+		
+		System.out.println("\n-CONTA DOS CLIENTES- ");
+		
+		System.out.println(cliente1);
+		System.out.println(cliente2);
+		System.out.println(cliente3);
+		System.out.println(cliente4);
+		System.out.println(cliente5);
 	}
 }

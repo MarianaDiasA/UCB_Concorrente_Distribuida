@@ -86,6 +86,11 @@ public class Cliente extends Thread{
 		return numero;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("NOME: %s\nSALDO: R$ %.2f\n", this.getNome(),this.getConta().getSaldo());
+	}
+	
 	public void run() {
 		this.fazerCompras();
 	}
