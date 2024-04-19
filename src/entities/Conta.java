@@ -1,15 +1,7 @@
 package entities;
 
-public class Conta {
+public interface Conta {
 	
-	private float saldo;
-	
-	public float getSaldo() {
-		return saldo;
-	}
-	
-	public void setSaldo(double valor) {
-		this.saldo += valor;
-	}
-
+	public float getSaldo();
+	public void setSaldo(double valor);
 }

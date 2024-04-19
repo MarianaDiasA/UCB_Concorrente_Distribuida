@@ -44,7 +44,6 @@ class TestSistema {
 		cl.fazerCompra(lo, 2800);
 		
 		Funcionario fu = lo.getFuncionarios().get(0);
-		lo.testPagamento();
 		
 		double valorInvestido = fu.getInvestimento().getSaldo();
 		double valorSalario = fu.getSalario().getSaldo();

@@ -6,8 +6,8 @@ public class Funcionario {
 	private Banco banco;
 	
 	public Funcionario() {
-		contaInvestimento = new Conta();
-		contaSalario = new Conta();
+		contaInvestimento = new ContaCPF();
+		contaSalario = new ContaCPF();
 		banco = new Banco();
 	}
 	

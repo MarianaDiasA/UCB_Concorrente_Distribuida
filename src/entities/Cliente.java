@@ -10,20 +10,20 @@ public class Cliente extends Thread{
 	private String nome = "anônimo";
 	
 	public Cliente() {
-		conta = new Conta();
+		conta = new ContaCPF();
 		banco = new Banco();
 		banco.fazerDeposito(this.getConta(), 1000);
 	}
 	
 	public Cliente(ArrayList<Loja> lojas) {
-		conta = new Conta();
+		conta = new ContaCPF();
 		banco = new Banco();
 		banco.fazerDeposito(this.getConta(), 1000);
 		this.setLojas(lojas);
 	}
 	
 	public Cliente(String nome,ArrayList<Loja> lojas) {
-		conta = new Conta();
+		conta = new ContaCPF();
 		banco = new Banco();
 		banco.fazerDeposito(this.getConta(), 1000);
 		this.setNome(nome);

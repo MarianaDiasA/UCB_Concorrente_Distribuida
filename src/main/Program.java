@@ -27,6 +27,28 @@ public class Program extends Thread {
 		cliente3.start();
 		cliente4.start();
 		cliente5.start();
-
+		
+		try {
+			cliente1.join();
+			cliente2.join();
+			cliente3.join();
+			cliente4.join();
+			cliente5.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		System.out.printf("Saldo de um dos funcionários \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n",
+				loja1.getFuncionarios().get(0).getSalario().getSaldo(),
+				loja1.getFuncionarios().get(0).getInvestimento().getSaldo());
+		System.out.printf("Saldo de um dos funcionários \nSalário: R$ %.2f\nInvestimento: R$ %.2f\n",
+				loja2.getFuncionarios().get(0).getSalario().getSaldo(),
+				loja2.getFuncionarios().get(0).getInvestimento().getSaldo());
+		System.out.printf("Saldo da loja 1: R$ %.2f\n",
+				loja1.getConta().getSaldo());
+		System.out.printf("Saldo da loja 2: R$ %.2f\n",
+				loja2.getConta().getSaldo());
 	}
 }
