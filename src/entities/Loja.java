@@ -10,13 +10,21 @@ public class Loja {
 	public Loja() {
 		funcionarios = new ArrayList<>();
 		//contratando funcionários
-		this.contrataFuncionario();
-		this.contrataFuncionario();
-		conta = new ContaCNPJ(this.getFuncionarios());
+		this.contrataFuncionario(new Banco());
+		this.contrataFuncionario(new Banco());
+		conta = new ContaCNPJ(this.getFuncionarios(),new Banco());
 	}
 	
-	private void contrataFuncionario() {
-		funcionarios.add(new Funcionario());
+	public Loja(Banco banco) {
+		funcionarios = new ArrayList<>();
+		//contratando funcionários
+		this.contrataFuncionario(banco);
+		this.contrataFuncionario(banco);
+		conta = new ContaCNPJ(this.getFuncionarios(), banco);
+	}
+	
+	private void contrataFuncionario(Banco banco) {
+		funcionarios.add(new Funcionario(banco));
 	}
 	
 	public Conta getConta() {

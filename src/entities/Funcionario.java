@@ -1,14 +1,13 @@
 package entities;
 
-public class Funcionario {
-	private Conta contaInvestimento;
-	private Conta contaSalario;
-	private Banco banco;
+public class Funcionario extends Thread{
+	private ContaCPF contaInvestimento;
+	private ContaCPF contaSalario;
+	private float SALARIO = 1400;
 	
-	public Funcionario() {
-		contaInvestimento = new ContaCPF();
-		contaSalario = new ContaCPF();
-		banco = new Banco();
+	public Funcionario(Banco banco) {
+		contaInvestimento = new ContaCPF(banco);
+		contaSalario = new ContaCPF(banco);
 	}
 	
 	public Conta getInvestimento() {
@@ -20,14 +19,19 @@ public class Funcionario {
 	}
 	
 	public void receberSalario(double valor) {
-		banco.fazerDeposito(this.getInvestimento(), valor*0.2);
-		banco.fazerDeposito(this.getSalario(), valor*0.8);
+		contaInvestimento.depositar((float) (valor*0.2));
+		contaSalario.depositar((float) (valor*0.8));
 	}
 	
 	@Override
 	public String toString() {
 		return String.format("Funcionário: \nSalário: %.2f \nInvestimento: %.2f \n", 
 				this.getSalario().getSaldo(), this.getInvestimento().getSaldo());
+	}
+	
+	@Override
+	public void run() {
+		this.receberSalario(SALARIO);
 	}
 }
 

@@ -4,28 +4,24 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Cliente extends Thread{
-	private Conta conta;
-	private Banco banco;
+	private ContaCPF conta;
 	private ArrayList<Loja> lojas;
 	private String nome = "anônimo";
 	
 	public Cliente() {
-		conta = new ContaCPF();
-		banco = new Banco();
-		banco.fazerDeposito(this.getConta(), 1000);
+		conta = new ContaCPF(new Banco());
+		conta.depositar(1000);
 	}
 	
 	public Cliente(ArrayList<Loja> lojas) {
-		conta = new ContaCPF();
-		banco = new Banco();
-		banco.fazerDeposito(this.getConta(), 1000);
+		conta = new ContaCPF(new Banco());
+		conta.depositar(1000);
 		this.setLojas(lojas);
 	}
 	
-	public Cliente(String nome,ArrayList<Loja> lojas) {
-		conta = new ContaCPF();
-		banco = new Banco();
-		banco.fazerDeposito(this.getConta(), 1000);
+	public Cliente(String nome,ArrayList<Loja> lojas, Banco banco) {
+		conta = new ContaCPF(banco);
+		conta.depositar(1000);
 		this.setNome(nome);
 		this.setLojas(lojas);
 	}
@@ -51,7 +47,7 @@ public class Cliente extends Thread{
 	}
 	
 	public void fazerCompra(Loja loja, double valor) {
-		banco.fazerTransferencia(conta, loja.getConta(),(int) valor);
+		conta.transferir(loja.getConta(),(int) valor);
 		System.out.printf("feito transferência de %s para loja no valor de R$ %.2f\n", this.getNome(), valor);
 	}
 
@@ -91,6 +87,7 @@ public class Cliente extends Thread{
 		return String.format("NOME: %s\nSALDO: R$ %.2f\n", this.getNome(),this.getConta().getSaldo());
 	}
 	
+	@Override
 	public void run() {
 		this.fazerCompras();
 	}

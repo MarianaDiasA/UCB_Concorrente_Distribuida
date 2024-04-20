@@ -2,25 +2,27 @@ package main;
 
 import java.util.ArrayList;
 
+import entities.Banco;
 import entities.Cliente;
 import entities.Loja;
 
 public class Program extends Thread {
 
 	public static void main(String[] args) {
-		Loja loja1 = new Loja();
-		Loja loja2 = new Loja();
+		Banco banco = new Banco();
+		Loja loja1 = new Loja(banco);
+		Loja loja2 = new Loja(banco);
 		
 		ArrayList<Loja> lojas = new ArrayList<>();
 		
 		lojas.add(loja1);
 		lojas.add(loja2);
 		
-		Cliente cliente1 = new Cliente("victor",lojas);
-		Cliente cliente2 = new Cliente("mariana",lojas);
-		Cliente cliente3 = new Cliente("lara",lojas);
-		Cliente cliente4 = new Cliente("caio",lojas);
-		Cliente cliente5 = new Cliente("amanda",lojas);
+		Cliente cliente1 = new Cliente("victor",lojas,banco);
+		Cliente cliente2 = new Cliente("mariana",lojas,banco);
+		Cliente cliente3 = new Cliente("lara",lojas,banco);
+		Cliente cliente4 = new Cliente("caio",lojas,banco);
+		Cliente cliente5 = new Cliente("amanda",lojas,banco);
 		
 		cliente1.start();
 		cliente2.start();
