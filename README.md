@@ -5,7 +5,7 @@ Projeto em java que simula um sistema bancário, no qual ocorre interações ent
 
 ## Fluxograma de execução do código
 
-![Fluxograma](info/fluxograma.png)
+<img src=info/fluxograma.png height=600px>
 
 Vale frizar que:
 - Existem no total 5 clientes, cada um com 1000 reais;
@@ -17,6 +17,10 @@ Vale frizar que:
 ## UML
 
 ![UML](info/UML.png)
+
+## Executando
+
+Para executar o código, basta rodar o arquivo [Program.java localizado no pacote main](src/main/Program.java).
 
 ## Stack utilizada
 
