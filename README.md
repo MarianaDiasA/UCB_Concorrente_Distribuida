@@ -14,6 +14,10 @@ Vale frizar que:
 - 2 tipos de conta, sendo elas: ContaCPF e ContaCNPJ;
 - E apenas um banco.
 
+## UML
+
+![UML](info/UML.png)
+
 ## Stack utilizada
 
 **Java 17** e **JUnit5**
